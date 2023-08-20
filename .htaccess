@@ -1,0 +1,50 @@
+RewriteEngine On
+<Files "clientPrivate.pem">  
+  Order Allow,Deny
+  Deny from all
+</Files>
+<Files "clientPulic.pem">  
+  Order Allow,Deny
+  Deny from all
+</Files>
+<Files "serverPrivate.pem">  
+  Order Allow,Deny
+  Deny from all
+</Files>
+<Files "serverPublic.pem">  
+  Order Allow,Deny
+  Deny from all
+</Files>
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+</IfModule>
+#Xử lý Route ADMIN
+
+RewriteRule ^admin/blog-edit/([A-Za-z0-9-]+) index.php?module=admin&action=blog-edit&id=$1 [L]
+RewriteRule ^admin/bank-edit/([A-Za-z0-9-]+) index.php?module=admin&action=bank-edit&id=$1 [L]
+RewriteRule ^admin/user-edit/([A-Za-z0-9-]+) index.php?module=admin&action=user-edit&id=$1 [L]
+RewriteRule ^admin/([A-Za-z0-9-]+) index.php?module=admin&action=$1 [L]
+RewriteRule ^admin index.php?module=admin&action= [L]
+#Xử lý Route CLIENT
+RewriteRule ^client/home/([A-Za-z0-9-]+) index.php?module=client&action=home&shop=$1 [L]
+RewriteRule ^client/viewsend/([A-Za-z0-9-]+) index.php?module=client&action=historysend&phonecheck=$1 [L]
+RewriteRule ^client/viewhis/([A-Za-z0-9-]+) index.php?module=client&action=historymomo&phonecheck=$1 [L]
+RewriteRule ^client/anti/([A-Za-z0-9-]+) index.php?module=client&action=anti&phonecheck=$1 [L]
+RewriteRule ^client/transfer/([A-Za-z0-9-]+) index.php?module=client&action=transfer&phonecheck=$1 [L]
+RewriteRule ^client/sendbank/([A-Za-z0-9-]+) index.php?module=client&action=send-bank&phonecheck=$1 [L]
+RewriteRule ^client/([A-Za-z0-9-]+) index.php?module=client&action=$1 [L]
+RewriteRule ^client index.php?module=client&action= [L]
+RewriteRule ^api/historymomo$ api/historymomo.php [L]
+RewriteRule ^api/listbank$ api/list_bank.json [L]
+
+#Xử lý nạp tiền
+RewriteRule ^recharge/([A-Za-z0-9-]+) index.php?module=client&action=$1 [L]
+#Xử lý Route COMMON
+RewriteRule ^common/([A-Za-z0-9-]+) index.php?module=common&action=$1 [L]
+ErrorDocument 404 /404.php

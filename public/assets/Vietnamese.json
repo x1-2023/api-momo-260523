@@ -1,0 +1,17 @@
+{
+    "sProcessing": "Đợi tí...",
+    "sLengthMenu": "Xem _MENU_ mục",
+    "sZeroRecords": "Không tìm thấy dữ liệu nè",
+    "sInfo": "Đang xem _START_ đến _END_ trong tổng số _TOTAL_ mục",
+    "sInfoEmpty": "",
+    "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+    "sInfoPostFix": "",
+    "sSearch": "Tìm kiếm:",
+    "sUrl": "",
+    "oPaginate": {
+      "sFirst": "Đầu",
+      "sPrevious": "Trước",
+      "sNext": "Tiếp",
+      "sLast": "Cuối"
+    }
+  }
